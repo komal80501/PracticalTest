@@ -19,13 +19,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         login_button.setOnClickListener {
+            it.isEnabled = false
             val username = editUsername.text.toString().toLowerCase()
             val password = editPassword.text.toString()
 
             if (username.isEmpty() && username != USER_NAME) {
                 Toast.makeText(activity, "Invalid Username ", Toast.LENGTH_SHORT).show()
+                it.isEnabled = true
             } else if (password.isEmpty() && password != PASSWORD) {
                 Toast.makeText(activity, "Invalid Password ", Toast.LENGTH_SHORT).show()
+                it.isEnabled = true
             } else {
                 progressBar.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({

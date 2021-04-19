@@ -6,7 +6,9 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.fragment_listing.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,10 +47,13 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
-    fun changeFormat(date: String): String {
-        var oldFormat = SimpleDateFormat("yyyy-mm-dd")
-        var newFormat = SimpleDateFormat("DD/MMM/YYY")
-        var d = oldFormat.parse(date)
-        return newFormat.format(d)
+    fun changeFormat(date: Date, format: String): String {
+        val sdf = SimpleDateFormat(format, Locale.US)
+        return sdf.format(date)
+    }
+
+    fun getSysDate(): String {
+        val sdf = SimpleDateFormat("dd/MMM/yyyy", Locale.US)
+        return sdf.format(System.currentTimeMillis())
     }
 }

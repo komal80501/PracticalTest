@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.grid_item_row.view.*
 
 class HashMapAdapter(
     context: Context,
-    val data: HashMap<String, String>,
+    val data: Map<String, Double>,
     private val resource: Int
 ) : ArrayAdapter<HashMapAdapter.ItemHolder>(context, resource) {
     private val mKeys: Array<String>
@@ -41,7 +41,7 @@ class HashMapAdapter(
         val key = mKeys[pos]
         val value = data[key]
         holder.key!!.text = key
-        holder.value!!.text = value
+        holder.value!!.text = value.toString()
 
 
         return convertView!!
